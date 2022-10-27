@@ -1,0 +1,21 @@
+{
+	"name": "lk-landingpage",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"watch:sass": "sass -w sass/style.scss css/style.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Minhpng/LK-landingpage.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Minhpng/LK-landingpage/issues"
+	},
+	"homepage": "https://github.com/Minhpng/LK-landingpage#readme"
+}
