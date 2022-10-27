@@ -1,6 +1,9 @@
 @import "./normalize";
 @import "./variables";
+@import "./text-color";
+@import "./utilities";
 
 body {
-	background-color: #fff;
+	font-family: "roboto", serif;
+	background-color: var(--bg-100);
 }

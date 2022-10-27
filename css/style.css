@@ -57,7 +57,22 @@ a {
 }
 
 :root {
-  --clr-primary: hsl(221, 100%, 31%);
+  --clr-primary-400: hsl(221, 100%, 31%);
+  --clr-primary-500: hsl(221, 100%, 21%);
+  --clr-primary-600: hsl(221, 100%, 18%);
+  --clr-primary-700: hsl(221, 100%, 15%);
+  --clr-org: hsl(40, 97%, 54%);
+  --clr-red: hsl(0, 82%, 54%);
+  --clr-blue: hsl(221, 100%, 31%);
+  --clr-green: hsl(76, 59%, 51%);
+  --clr-yel: hsl(59, 100%, 50%);
+  --clr-gray-300: hsl(0, 0%, 20%);
+  --clr-gray-400: hsl(0, 0%, 30%);
+  --clr-gray-500: hsl(0, 0%, 40%);
+  --clr-gray-600: hsl(0, 0%, 50%);
+  --clr-gray-700: hsl(0, 0%, 55%);
+  --clr-gray-800: hsl(0, 0%, 60%);
+  --bg-100: hsl(0, 0, 96%);
   --fs-300: 0.875rem;
   --fs-400: 1rem;
   --fs-500: 1.125rem;
@@ -74,8 +89,97 @@ a {
   --fs-sub-heading: var(var(--fs-400));
 }
 
+.text-primary-400 {
+  color: var(--clr-primary-400);
+}
+
+.text-primary-500 {
+  color: var(--clr-primary-500);
+}
+
+.text-primary-600 {
+  color: var(--clr-primary-600);
+}
+
+.text-primary-700 {
+  color: var(--clr-primary-700);
+}
+
+.text-org {
+  color: var(--clr-org);
+}
+
+.text-red {
+  color: var(--clr-red);
+}
+
+.text-green {
+  color: var(--clr-green);
+}
+
+.text-blue {
+  color: var(--clr-blue);
+}
+
+.text-yel {
+  color: var(--clr-yel);
+}
+
+.text-gray-300 {
+  color: var(--clr-gray-300);
+}
+
+.text-gray-400 {
+  color: var(--clr-gray-400);
+}
+
+.text-gray-500 {
+  color: var(--clr-gray-500);
+}
+
+.text-gray-600 {
+  color: var(--clr-gray-600);
+}
+
+.text-gray-700 {
+  color: var(--clr-gray-700);
+}
+
+.text-gray-800 {
+  color: var(--clr-gray-800);
+}
+
+.fs-primary-heading {
+  font-size: var(--fs-heading);
+}
+
+.fs-sec-heading {
+  font-size: var(--fs-sec-heading);
+}
+
+.fs-sub-heading {
+  font-size: var(--fs-sub-heading);
+}
+
+.fs-body {
+  font-size: var(--fs-body);
+}
+
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+.fw-sm-bold {
+  font-weight: var(--fw-semi-bold);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
 body {
-  background-color: #fff;
+  font-family: "roboto", serif;
+  background-color: var(--bg-100);
 }
 
 /*# sourceMappingURL=style.css.map */
