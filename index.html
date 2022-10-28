@@ -7,10 +7,12 @@
 		<title>Lang Kingdom landing page</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<link
 			href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Roboto:wght@400;500;700;900&display=swap"
 			rel="stylesheet"
 		/>
+		<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
@@ -30,29 +32,149 @@
 					<h1 class="hero-heading">Hãy khoan</h1>
 					<h3 class="main-title fs-sec-heading fw-sm-bold">Đừng bấm nút học thử nếu bạn chưa biết cách!</h3>
 					<button class="btn">HỌC THỬ NGAY</button>
-					<div class="hero-video dash-box">
-						<h3 class="main-title fs-sec-heading fw-sm-bold">
-							Chỉ cần 83 phút xem video này, dám cá 100% bạn sẽ giỏi tiếng Anh giao tiếp, dù bạn có nằm mơ cũng không
-							thể tin!
-						</h3>
-						<div class="video-wrapper">
-							<!-- uti class -->
-							<div class="play-icon">
-								<svg>
-									<use xlink:href="./img/play-btn.svg#play-btn"></use>
-								</svg>
+				</div>
+			</section>
+			<div class="container">
+				<div class="hero-video dash-box">
+					<h3 class="main-title fs-sec-heading fw-sm-bold">
+						Chỉ cần 83 phút xem video này, dám cá 100% bạn sẽ giỏi tiếng Anh giao tiếp, dù bạn có nằm mơ cũng không thể
+						tin!
+					</h3>
+					<div class="video-wrapper">
+						<!-- uti class -->
+						<div class="play-icon">
+							<svg>
+								<use xlink:href="./img/play-btn.svg#play-btn"></use>
+							</svg>
+						</div>
+						<video
+							video-controler
+							controls
+							poster="/img/video-hero-thumbnail.png"
+							src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
+							type="video/mp4"
+						></video>
+					</div>
+				</div>
+			</div>
+			<section class="section gift-section">
+				<div class="container">
+					<h1 class="fs-primary-heading fw-bold mb10">
+						Quà tặng đặc biệt để học lần này là giỏi tiếng Anh toàn diện*:
+					</h1>
+					<p class="text-red fs-body">*Chỉ dành tặng cho những người đặc biệt (công bố cuối video)!</p>
+					<ul class="list=wrapper">
+						<li class="list-item-number">
+							<span class="number-list">1</span>
+							<p class="list-content fs-md">
+								Khoá học: "10 ngày nắm vững phát âm IPA giọng bản xứ và đọc làu làu từ điển."
+								<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
+							</p>
+						</li>
+						<li class="list-item-number">
+							<span class="number-list">2</span>
+							<p class="list-content fs-md">
+								Khóa học: "60 điểm ngữ pháp lấy lại tất tần tật căn bản tiếng Anh!"
+								<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
+							</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="testimonial section">
+				<div class="container">
+					<h1 class="fs-primary-heading fw-bold">Hãy nghe những người đi trước nói:</h1>
+				</div>
+
+				<div class="testimonial__wrapper">
+					<div class="swiper container">
+						<div class="avatar-wrapper">
+							<img src="./img/avatar-group.png" alt="avatar" />
+						</div>
+						<div reviewWrapper class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="/img/comment/review-1.jpg" alt="" />
 							</div>
-							<video
-								video-controler
-								controls
-								poster="/img/video-hero-thumbnail.png"
-								src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
-								type="video/mp4"
-							></video>
+						</div>
+						<div class="custom-swiper-navigation">
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-pagination"></div>
+							<div class="swiper-button-next"></div>
 						</div>
 					</div>
 				</div>
 			</section>
 		</main>
+		<footer class="section">
+			<div class="container">
+				<h1>Lang Kingdom</h1>
+				<p>470 North Bridge Road, <span class="inline">#05-12 Bugis Cube,</span> Singapore (188735)</p>
+				<p>
+					<i class="far fa-registered icon"></i>
+					2022 Lang Kingdom Pte. Ltd. <span class="inline">All Rights Reserved.</span>
+				</p>
+			</div>
+		</footer>
+		<!-- <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> -->
+		<script>
+			const renderReview = () => {
+				const reviewList = [
+					{ src: "/img/comment/review-20.jpg" },
+					{ src: "/img/comment/review-21.jpg" },
+					{ src: "/img/comment/review-22.jpg" },
+					{ src: "/img/comment/review-24.jpg" },
+					{ src: "/img/comment/review-26.jpg" },
+				]
+				const htmlReview = reviewList.map((review) => {
+					return `
+                                    <div class="swiper-slide">
+                                    <img src="${review.src}" alt="">
+                                    </div>
+                                    `
+				})
+
+				const reviewWrapper = document.querySelector("[reviewWrapper]")
+				reviewWrapper.innerHTML = htmlReview.join("")
+			}
+
+			renderReview()
+
+			const swiper = new Swiper(".swiper", {
+				loop: true,
+
+				autoplay: {
+					delay: 5000,
+					pauseOnMouseEnter: true,
+				},
+
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+					rewind: true,
+				},
+
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+
+				breakpoints: {
+					375: {
+						slidesPerView: 1,
+						spaceBetween: 50,
+					},
+
+					640: {
+						slidesPerView: 1,
+						spaceBetween: 50,
+					},
+
+					1024: {
+						slidesPerView: 2,
+						spaceBetween: 20,
+					},
+				},
+			})
+		</script>
 	</body>
 </html>
