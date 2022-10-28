@@ -58,36 +58,44 @@
 				</div>
 			</div>
 			<section class="section gift-section">
+				<!-- <div class="wave"></div> -->
 				<div class="container">
-					<h1 class="fs-primary-heading fw-bold mb10">
-						Quà tặng đặc biệt để học lần này là giỏi tiếng Anh toàn diện*:
-					</h1>
-					<p class="text-red fs-body">*Chỉ dành tặng cho những người đặc biệt (công bố cuối video)!</p>
-					<ul class="list=wrapper">
-						<li class="list-item-number">
-							<span class="number-list">1</span>
-							<p class="list-content fs-md">
-								Khoá học: "10 ngày nắm vững phát âm IPA giọng bản xứ và đọc làu làu từ điển."
-								<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
-							</p>
-						</li>
-						<li class="list-item-number">
-							<span class="number-list">2</span>
-							<p class="list-content fs-md">
-								Khóa học: "60 điểm ngữ pháp lấy lại tất tần tật căn bản tiếng Anh!"
-								<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
-							</p>
-						</li>
-					</ul>
+					<div class="gift-content-wrapper">
+						<h1 class="fs-primary-heading fw-bold mb10">
+							Quà tặng đặc biệt để học lần này là giỏi tiếng Anh toàn diện*:
+						</h1>
+						<p class="text-red fs-body">*Chỉ dành tặng cho những người đặc biệt (công bố cuối video)!</p>
+						<ul class="list=wrapper">
+							<li class="list-item-number">
+								<span class="number-list">1</span>
+								<p class="list-content fs-md">
+									Khoá học: "10 ngày nắm vững phát âm IPA giọng bản xứ và đọc làu làu từ điển."
+									<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
+								</p>
+							</li>
+							<li class="list-item-number">
+								<span class="number-list">2</span>
+								<p class="list-content fs-md">
+									Khóa học: "60 điểm ngữ pháp lấy lại tất tần tật căn bản tiếng Anh!"
+									<span class="inline">Trị giá: <span class="strike">2.000.000 VNĐ</span></span>
+								</p>
+							</li>
+						</ul>
+					</di >
 				</div>
 			</section>
-			<section class="testimonial section">
+			<section class="testimonial">
 				<div class="container">
 					<h1 class="fs-primary-heading fw-bold">Hãy nghe những người đi trước nói:</h1>
 				</div>
 
 				<div class="testimonial__wrapper">
-					<div class="swiper container">
+					<div class="">
+						<div class="review-image">
+							<img src="./img/comment/big-comment.png" alt="">
+						</div>
+					</div>
+					<!-- <div class="swiper container">
 						<div class="avatar-wrapper">
 							<img src="./img/avatar-group.png" alt="avatar" />
 						</div>
@@ -101,7 +109,7 @@
 							<div class="swiper-pagination"></div>
 							<div class="swiper-button-next"></div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</section>
 		</main>
@@ -119,11 +127,11 @@
 		<script>
 			const renderReview = () => {
 				const reviewList = [
-					{ src: "/img/comment/review-20.jpg" },
-					{ src: "/img/comment/review-21.jpg" },
-					{ src: "/img/comment/review-22.jpg" },
-					{ src: "/img/comment/review-24.jpg" },
-					{ src: "/img/comment/review-26.jpg" },
+					{ src: "/img/comment/review-20.png" },
+					{ src: "/img/comment/review-21.png" },
+					{ src: "/img/comment/review-22.png" },
+					{ src: "/img/comment/review-24.png" },
+					{ src: "/img/comment/review-26.png" },
 				]
 
 				let htmlReview = ""

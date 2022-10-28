@@ -75,15 +75,19 @@ header .container {
 	background-color: var(--bg-light);
 	background-image: url(../img/gift-background.png);
 	background-repeat: no-repeat;
-	background-size: 50%;
-	background-position: 120% bottom;
-	display: grid;
-	grid-template-columns: min(10%, 130px) min(750px, 100%) auto;
-	justify-content: start;
+	background-size: 40%;
+	background-position: 110% bottom;
+	position: relative;
 
 	.container {
 		padding-left: 20px;
 		grid-column: 2 / span 1;
+		display: grid;
+		grid-template-columns: min(750px, 100%) auto;
+		justify-content: start;
+	}
+
+	.gift-content-wrapper {
 	}
 }
 
@@ -92,9 +96,43 @@ header .container {
 
 .testimonial {
 	text-align: center;
+	padding-block: var(--section-padding);
+	margin-inline: auto;
+	overflow: hidden;
+	// background-color: #377afd;
 
 	.container {
 		overflow: hidden;
+	}
+
+	.review-image {
+		background-image: url("../img/comment/big-comment-vertical.png");
+		background-size: 100%;
+		background-position: center top;
+		background-repeat: no-repeat;
+		width: calc(100% - 20px);
+		margin-inline: auto;
+		padding-top: 470%;
+
+		img {
+			display: none;
+		}
+
+		@media (min-width: 56.25rem) {
+			background-image: none;
+			width: 100%;
+			padding-top: 0;
+			min-width: 800px;
+
+			img {
+				display: block;
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+				margin-block: 1.25rem;
+				min-width: 1816px;
+			}
+		}
 	}
 }
 
@@ -112,7 +150,8 @@ header .container {
 }
 
 .testimonial__wrapper {
-	background-color: var(--bg-light);
+	// background-color: var(--bg-light);
+	background-color: #377afd;
 	padding-block: 1.25em;
 }
 

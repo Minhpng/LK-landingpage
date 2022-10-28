@@ -363,6 +363,38 @@ a {
   font-family: "Merriweather", serif;
 }
 
+.wave {
+  position: absolute;
+  height: 48px;
+  width: 100%;
+  background: #377afd;
+  bottom: 0;
+}
+
+.wave::before,
+.wave::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+}
+
+.wave::before {
+  width: 55%;
+  height: 109%;
+  background-color: #fff;
+  right: -1.5%;
+  top: 60%;
+}
+
+.wave::after {
+  width: 55%;
+  height: 100%;
+  background-color: #377afd;
+  left: -1.5%;
+  top: 40%;
+}
+
 body {
   font-family: "roboto", sans-serif;
   background-color: var(--bg-gray-100);
@@ -424,22 +456,53 @@ header .container {
   background-color: var(--bg-light);
   background-image: url(../img/gift-background.png);
   background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: 120% bottom;
-  display: grid;
-  grid-template-columns: min(10%, 130px) min(750px, 100%) auto;
-  justify-content: start;
+  background-size: 40%;
+  background-position: 110% bottom;
+  position: relative;
 }
 .gift-section .container {
   padding-left: 20px;
   grid-column: 2/span 1;
+  display: grid;
+  grid-template-columns: min(750px, 100%) auto;
+  justify-content: start;
 }
-
 .testimonial {
   text-align: center;
+  padding-block: var(--section-padding);
+  margin-inline: auto;
+  overflow: hidden;
 }
 .testimonial .container {
   overflow: hidden;
+}
+.testimonial .review-image {
+  background-image: url("../img/comment/big-comment-vertical.png");
+  background-size: 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: calc(100% - 20px);
+  margin-inline: auto;
+  padding-top: 470%;
+}
+.testimonial .review-image img {
+  display: none;
+}
+@media (min-width: 56.25rem) {
+  .testimonial .review-image {
+    background-image: none;
+    width: 100%;
+    padding-top: 0;
+    min-width: 800px;
+  }
+  .testimonial .review-image img {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-block: 1.25rem;
+    min-width: 1816px;
+  }
 }
 
 .avatar-wrapper {
@@ -455,7 +518,7 @@ header .container {
 }
 
 .testimonial__wrapper {
-  background-color: var(--bg-light);
+  background-color: #377afd;
   padding-block: 1.25em;
 }
 
