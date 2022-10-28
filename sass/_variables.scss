@@ -43,8 +43,8 @@
 	--fw-bolder: 900;
 
 	--fs-body: var(--fs-500); //18px
-	--fs-heading: var(--fs-700); //30px
-	--fs-sec-heading: var(--fs-600); //20px
+	--fs-heading: clamp(var(--fs-700), 5vw, var(--fs-800)); //30px
+	--fs-sec-heading: clamp(var(--fs-600), 5vw, var(--fs-800)); //20px
 	--fs-sub-heading: var(var(--fs-400)); //16px
 
 	--section-padding: 3.5rem;

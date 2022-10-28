@@ -33,8 +33,8 @@
   --fw-bold: 700;
   --fw-bolder: 900;
   --fs-body: var(--fs-500);
-  --fs-heading: var(--fs-700);
-  --fs-sec-heading: var(--fs-600);
+  --fs-heading: clamp(var(--fs-700), 5vw, var(--fs-800));
+  --fs-sec-heading: clamp(var(--fs-600), 5vw, var(--fs-800));
   --fs-sub-heading: var(var(--fs-400));
   --section-padding: 3.5rem;
 }
@@ -173,11 +173,6 @@ a {
   padding-block: var(--section-padding);
   margin-inline: auto;
 }
-@media screen and (min-width: 56.25rem) {
-  .section {
-    max-width: 80rem;
-  }
-}
 
 .inline {
   display: inline-block;
@@ -208,7 +203,7 @@ a {
 
 .fs-sec-heading {
   font-size: var(--fs-sec-heading);
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: 1.25rem;
 }
 
@@ -432,12 +427,28 @@ header .container {
 }
 .hero-section .hero-heading {
   color: var(--clr-accent-400);
-  font-size: clamp(var(--fs-800), 2vw, var(--fs-900));
+  font-size: clamp(var(--fs-800), 5vw, var(--fs-900));
   font-weight: var(--fw-bolder);
   font-family: "Merriweather", serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   line-height: 1.3;
+  position: relative;
+  margin-bottom: 0.2em;
+}
+.hero-section .hero-heading span {
+  position: relative;
+}
+.hero-section .hero-heading span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  background-image: url(../img/underline.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  bottom: -6px;
+  left: 0;
 }
 
 .hero-video {
@@ -474,6 +485,15 @@ header .container {
   padding-top: var(--section-padding);
   margin-inline: auto;
   overflow: hidden;
+  background-image: url("../img/section-divider.svg");
+  background-size: auto;
+  background-position: top left;
+  background-repeat: repeat-x;
+  background-color: #377afd;
+  color: #fff;
+}
+.testimonial h1 {
+  padding-top: 2rem;
 }
 .testimonial .container {
   overflow: hidden;
@@ -485,7 +505,7 @@ header .container {
   background-repeat: no-repeat;
   width: calc(100% - 20px);
   margin-inline: auto;
-  padding-top: 480%;
+  padding-top: 450%;
 }
 .testimonial .review-image img {
   display: none;
@@ -520,10 +540,6 @@ header .container {
 }
 
 .testimonial__wrapper {
-  background-image: url("../img/background-review.jpg"), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  background-size: cover;
-  background-position: top left;
-  background-blend-mode: overlay;
   padding-block: 1.25em;
   position: relative;
 }
