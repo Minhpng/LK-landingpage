@@ -1,0 +1,30 @@
+//font size
+
+.fs-primary-heading {
+	font-size: var(--fs-heading);
+	line-height: 1.2;
+}
+.fs-sec-heading {
+	font-size: var(--fs-sec-heading);
+	line-height: 1.2;
+}
+.fs-sub-heading {
+	font-size: var(--fs-sub-heading);
+	line-height: 1.2;
+}
+.fs-body {
+	font-size: var(--fs-body);
+	line-height: 1.5;
+}
+
+// font weight
+
+.fw-regular {
+	font-weight: var(--fw-regular);
+}
+.fw-sm-bold {
+	font-weight: var(--fw-semi-bold);
+}
+.fw-bold {
+	font-weight: var(--fw-bold);
+}
