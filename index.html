@@ -5,6 +5,54 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Lang Kingdom landing page</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Roboto:wght@400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<div class="container">
+				<div class="header-logo">
+					<img src="./img/Logo-trang.svg" alt="logo" class="main-logo" />
+				</div>
+				<div class="header-action">
+					<button class="btn">Đăng nhập</button>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="section hero-section">
+				<div class="container">
+					<h1 class="hero-heading">Hãy khoan</h1>
+					<h3 class="main-title fs-sec-heading fw-sm-bold">Đừng bấm nút học thử nếu bạn chưa biết cách!</h3>
+					<button class="btn">HỌC THỬ NGAY</button>
+					<div class="hero-video dash-box">
+						<h3 class="main-title fs-sec-heading fw-sm-bold">
+							Chỉ cần 83 phút xem video này, dám cá 100% bạn sẽ giỏi tiếng Anh giao tiếp, dù bạn có nằm mơ cũng không
+							thể tin!
+						</h3>
+						<div class="video-wrapper">
+							<!-- uti class -->
+							<div class="play-icon">
+								<svg>
+									<use xlink:href="./img/play-btn.svg#play-btn"></use>
+								</svg>
+							</div>
+							<video
+								video-controler
+								controls
+								poster="/img/video-hero-thumbnail.png"
+								src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
+								type="video/mp4"
+							></video>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
 </html>

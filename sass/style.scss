@@ -3,8 +3,54 @@
 @import "./variables";
 @import "./utilities";
 
+* {
+	// outline: 1px solid red;
+}
+
 body {
-	font-family: "roboto", serif;
+	font-family: "roboto", sans-serif;
 	background-color: var(--bg-gray-100);
-	overflow: hidden;
+	overflow-x: hidden;
+}
+// ===============================================================
+// header ========================================================
+header {
+	background-color: var(--bg-primary);
+}
+
+header .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 0;
+}
+
+// ===============================================================
+// hero-section===================================================
+
+.hero-section {
+	background-color: var(--bg-primary);
+	color: #fff;
+	text-align: center;
+	max-height: 550px;
+
+	.hero-heading {
+		color: var(--clr-accent-400);
+		font-size: clamp(var(--fs-800), 2vw, var(--fs-900));
+		font-weight: var(--fw-bolder);
+		font-family: "Merriweather", serif;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		line-height: 1.3;
+	}
+
+	.hero-video {
+		background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='white' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+		background-color: var(--clr-primary-100);
+		border-radius: 15px;
+		padding: 1em;
+		position: relative;
+		bottom: -30px;
+		cursor: pointer;
+	}
 }
