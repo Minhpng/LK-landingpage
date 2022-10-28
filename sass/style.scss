@@ -1,6 +1,7 @@
 @import "./normalize";
 @import "./text-color";
 @import "./variables";
+<<<<<<< HEAD
 @import "./utilities";
 
 * {
@@ -161,4 +162,12 @@ footer h1 {
 
 footer p {
 	font-size: 18px;
+=======
+@import "./text-color";
+@import "./utilities";
+
+body {
+	font-family: "roboto", serif;
+	background-color: var(--bg-100);
+>>>>>>> 282c81b (no message)
 }
