@@ -10,6 +10,11 @@
 
 .section {
 	padding-block: var(--section-padding);
+	margin-inline: auto;
+
+	@media screen and (min-width: 56.25rem) {
+		max-width: 80rem;
+	}
 }
 
 .inline {
@@ -150,6 +155,7 @@
 	border-radius: 100vw;
 	cursor: pointer;
 	transition: background-color 300ms;
+	user-select: none;
 
 	&:hover,
 	&:active {

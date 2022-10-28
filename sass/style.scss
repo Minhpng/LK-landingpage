@@ -23,19 +23,24 @@ header .container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 15px 0;
+	padding-block: 15px;
 }
 
 // ===============================================================
 // hero-section===================================================
 
 .hero-section {
+	padding-block: var(--section-padding);
 	background-color: var(--bg-primary);
-	background-image: url(../img/Star-1.png), url(../img/Star-2.png), url(../img/Rectangle-8.png),
-		url(../img/Rectangle-9.png);
+	background-image: url(../img/Star-1.svg), url(../img/Star-2.svg), url(../img/Rectangle-8.svg),
+		url(../img/Rectangle-9.svg);
 	background-repeat: no-repeat;
 	background-size: auto;
-	background-position: 34rem 1rem, 0rem 28rem, 0rem 34rem, 14rem 19rem;
+	background-position: 95% 1rem, 2% 28rem, -40% 230%, 60% 11rem;
+
+	@media only screen and (min-width: 90rem) {
+		background-position: 69% 1rem, 23% 28rem, 22% 190%, 80% 20rem;
+	}
 	color: #fff;
 	text-align: center;
 	min-height: 550px;
@@ -55,7 +60,7 @@ header .container {
 	background-color: var(--clr-primary-100);
 	border-radius: 15px;
 	padding: 1em;
-	margin-top: -300px;
+	margin-top: -270px;
 	cursor: pointer;
 	color: #fff;
 	text-align: center;
@@ -68,6 +73,18 @@ header .container {
 	--margin-top: 40px;
 	margin-top: var(--margin-top);
 	background-color: var(--bg-light);
+	background-image: url(../img/gift-background.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-position: 120% bottom;
+	display: grid;
+	grid-template-columns: min(10%, 130px) min(750px, 100%) auto;
+	justify-content: start;
+
+	.container {
+		padding-left: 20px;
+		grid-column: 2 / span 1;
+	}
 }
 
 // ===============================================================
