@@ -379,7 +379,7 @@ header .container {
   background-image: url(../img/Star-1.png), url(../img/Star-2.png), url(../img/Rectangle-8.png), url(../img/Rectangle-9.png);
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: 34rem 1rem, 0rem 28rem;
+  background-position: 34rem 1rem, 0rem 28rem, 0rem 34rem, 14rem 19rem;
   color: #fff;
   text-align: center;
   min-height: 550px;
