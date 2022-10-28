@@ -1,9 +1,19 @@
 @import "./normalize";
+<<<<<<< HEAD
 @import "./variables";
 @import "./text-color";
+=======
+@import "./text-color";
+@import "./variables";
+>>>>>>> 51e974e2440305b2c426ee20d71d09f6d9a51ff0
 @import "./utilities";
 
 body {
 	font-family: "roboto", serif;
+<<<<<<< HEAD
 	background-color: var(--bg-100);
+=======
+	background-color: var(--bg-gray-100);
+	overflow: hidden;
+>>>>>>> 51e974e2440305b2c426ee20d71d09f6d9a51ff0
 }
