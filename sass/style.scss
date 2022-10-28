@@ -1,6 +1,6 @@
+@import "./variables";
 @import "./normalize";
 @import "./text-color";
-@import "./variables";
 @import "./utilities";
 
 * {
@@ -86,9 +86,6 @@ header .container {
 		grid-template-columns: min(750px, 100%) auto;
 		justify-content: start;
 	}
-
-	.gift-content-wrapper {
-	}
 }
 
 // ===============================================================
@@ -96,7 +93,7 @@ header .container {
 
 .testimonial {
 	text-align: center;
-	padding-block: var(--section-padding);
+	padding-top: var(--section-padding);
 	margin-inline: auto;
 	overflow: hidden;
 	// background-color: #377afd;
@@ -108,11 +105,11 @@ header .container {
 	.review-image {
 		background-image: url("../img/comment/big-comment-vertical.png");
 		background-size: 100%;
-		background-position: center top;
+		background-position: center center;
 		background-repeat: no-repeat;
 		width: calc(100% - 20px);
 		margin-inline: auto;
-		padding-top: 470%;
+		padding-top: 480%;
 
 		img {
 			display: none;
@@ -151,8 +148,13 @@ header .container {
 
 .testimonial__wrapper {
 	// background-color: var(--bg-light);
-	background-color: #377afd;
+	background-image: url("../img/background-review.jpg"), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+	background-size: cover;
+	background-position: top left;
+	background-blend-mode: overlay;
+	// background-color: #377afd;
 	padding-block: 1.25em;
+	position: relative;
 }
 
 .testimonial .swiper-wrapper {

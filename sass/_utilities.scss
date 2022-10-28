@@ -168,6 +168,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	margin-inline: -30px;
 
 	.play-icon {
 		position: absolute;
@@ -201,10 +202,10 @@
 
 .wave {
 	position: absolute;
-	height: 48px;
+	height: 28px;
 	width: 100%;
-	background: #377afd;
-	bottom: 0;
+	background: #f5f5f5;
+	top: -9px;
 }
 
 .wave::before,
@@ -218,14 +219,14 @@
 .wave::before {
 	width: 55%;
 	height: 109%;
-	background-color: #fff;
+	background-color: #f5f5f5;
 	right: -1.5%;
-	top: 60%;
+	top: 77%;
 }
 .wave::after {
-	width: 55%;
-	height: 100%;
-	background-color: #377afd;
+	width: 75%;
+	height: 160%;
+	background-color: #f5f5f5;
 	left: -1.5%;
-	top: 40%;
+	top: 13%;
 }
