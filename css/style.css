@@ -442,13 +442,14 @@ header .container {
 .hero-section .hero-heading span:after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 160px;
   height: 12px;
   background-image: url(../img/underline.svg);
   background-repeat: no-repeat;
   background-position: left;
   bottom: -6px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hero-video {
