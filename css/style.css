@@ -581,6 +581,26 @@ a {
   font-weight: 500;
   color: #333;
 }
+.price-list .package-desc .package-price {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: hsl(0deg, 100%, 45%);
+}
+.price-list .package-desc .package-price span {
+  color: hsl(0deg, 0%, 74%);
+  margin-left: 5px;
+  position: relative;
+}
+.price-list .package-desc .package-price span:after {
+  content: "";
+  width: calc(100% + 5px);
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 body {
   font-family: "roboto", sans-serif;
