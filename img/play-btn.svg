@@ -1,0 +1,8 @@
+<svg width="0" height="0" class="hidden">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114 114" id="play-btn">
+    <circle class="play-icon-bg" opacity="0.6" cx="57" cy="57.152" r="56.8" fill="currentColor"></circle>
+    <path d="M81.992 57.1519L46.208 77.8118L46.208 36.492L81.992 57.1519Z" fill="white"></path>
+  </symbol>
+</svg>
+
+<!-- fill="#FF2F2F" -->

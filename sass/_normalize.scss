@@ -16,6 +16,8 @@ html:focus-within {
 html,
 body {
 	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 body {
@@ -29,7 +31,7 @@ video,
 canvas,
 svg {
 	display: block;
-	max-width: 100%;
+	width: 100%;
 }
 input,
 button,

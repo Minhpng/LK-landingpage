@@ -1,0 +1,40 @@
+.countdown__heading {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-bottom: 0.625rem;
+	text-align: center;
+	color: hsl(0, 100%, 54%);
+}
+
+.countdown__clock-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+.countdown__number-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 8px;
+}
+
+.countdown-number {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
+	padding: 0.2em 0.2em;
+	background-color: var(--clr-org);
+	border-radius: 8px;
+	color: var(--clr-gray-300);
+}
+
+.countdown-prefix {
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 500;
+	color: hsl(0, 0, 60%);
+}
