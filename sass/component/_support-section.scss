@@ -4,6 +4,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin-bottom: 1rem;
 }
 
 .support-phone-wrapper {
@@ -32,5 +33,18 @@
 	&:hover,
 	&:active {
 		color: hsl(215, 100%, 50%);
+	}
+}
+
+.request-support {
+	text-align: center;
+	font-size: 1.125rem;
+	color: #333;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+
+	.btn {
+		background-color: hsl(215 100% 50%);
 	}
 }

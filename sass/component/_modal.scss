@@ -16,7 +16,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: start;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 
 	.modal-content {
@@ -43,6 +44,8 @@
 			padding: 0.2em 0.5em;
 			color: #333;
 			z-index: 1;
+			cursor: pointer;
+			user-select: none;
 		}
 
 		@media screen and (min-width: 56.25rem) {

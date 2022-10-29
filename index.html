@@ -129,7 +129,9 @@
 			<div class="modal-content-wrapper" role="document">
 				<div class="modal-content">
 					<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
-					<div class="modal-video">
+					<div
+					 style="display: block;"
+					 class="modal-video">
 						<div class="video-wrapper">
 							<video
 								video-controler
@@ -157,8 +159,29 @@
 							</div> -->
 							<div class="price-list">
 								<h2 class="fs-sec-heading fw-bold text-center">Mức giá ưu đãi dành riêng cho bạn
-									</br>Chỉ 1 lần duy nhất trong thời gian có hạn</h2>
+									</br>Chỉ 1 lần duy nhất</h2>
 								<!-- countdown -->
+								<div class="countdown">
+									<div class="countdown__heading">Ưu đãi kết thúc sau:</div>
+									<div class="countdown__clock-wrapper">
+										<div class="countdown__number-wrapper">
+											<span class="countdown-number">02</span>
+											<span class="countdown-prefix">Ngày</span>
+										</div>
+										<div class="countdown__number-wrapper">
+											<span class="countdown-number">12</span>
+											<span class="countdown-prefix">Giờ</span>
+										</div>
+										<div class="countdown__number-wrapper">
+											<span class="countdown-number">20</span>
+											<span class="countdown-prefix">Phút</span>
+										</div>
+										<div class="countdown__number-wrapper">
+											<span class="countdown-number">11</span>
+											<span class="countdown-prefix">Giây</span>
+										</div>
+									</div>
+								</div>
 								<p class="choose-package-cta">Chọn gói thanh toán</p>
 								<div class="package-wrapper">
 									<div class="package-item">
@@ -173,6 +196,18 @@
 													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
 													<p class="package-desc__content">2 năm học</p>
 												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">Thêm 6 tháng học</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">Khoá 10 ngày phát âm</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">Khóa lấy lại căn bản</p>
+												</li>
 											</ul>
 											<p class="package-price"><span>6,120,000 VNĐ</span> 1,290,000 VNĐ</p>
 											<button class="btn">Thanh toán</button>
@@ -180,8 +215,8 @@
 									</div>
 									<div class="package-item">
 										<h2>
-											Gói đặc biệt
-											<span>Bestseller</span>
+											Gói 2 năm
+											<!-- <span>Bestseller</span> -->
 										</h2>
 										<div class="package-desc">
 											<p class="desc-text">Gồm:</p>
@@ -190,12 +225,70 @@
 													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
 													<p class="package-desc__content">2 năm học</p>
 												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-cross.svg" alt=""></div>
+													<p class="package-desc__content">Thêm 6 tháng học</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-cross.svg" alt=""></div>
+													<p class="package-desc__content">Khoá 10 ngày phát âm</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-cross.svg" alt=""></div>
+													<p class="package-desc__content">Khóa lấy lại căn bản</p>
+												</li>
 											</ul>
 											<p class="package-price"><span>6,120,000 VNĐ</span> 1,290,000 VNĐ</p>
-											<button class="btn">Thanh toán</button>
+											<button class="btn btn-secondary">Thanh toán</button>
+										</div>
+									</div>
+									<div class="package-item">
+										<h2>
+											Gói 1 năm tặng 3 tháng
+											<!-- <span>Bestseller</span> -->
+										</h2>
+										<div class="package-desc">
+											<p class="desc-text">Gồm:</p>
+											<ul class="package-desc__list">
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">1 năm học</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">Thêm 3 tháng học</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-cross.svg" alt=""></div>
+													<p class="package-desc__content">Khoá 10 ngày phát âm</p>
+												</li>
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-cross.svg" alt=""></div>
+													<p class="package-desc__content">Khóa lấy lại căn bản</p>
+												</li>
+											</ul>
+											<p class="package-price"><span>6,120,000 VNĐ</span> 1,290,000 VNĐ</p>
+											<button class="btn btn-secondary">Thanh toán</button>
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="support text-center">
+								<p class="text-red fw-bold fs-body">Vui lòng liên hệ hỗ nếu bạn cần giúp đỡ</p>
+								<div class="support-phone-wrapper">
+									<div class="support-icon">
+										<svg class="icon">
+											<use xlink:href="./img/support-icon.svg#support-icon"></use>
+										  </svg>
+									</div>
+									<a class="support-phone-number" href="tel:+84973979109">097 397 9109</a>
+								</div>
+							</div>
+							<div class="request-support">
+								<p class="request-support__desc">
+									Hoặc gửi yêu cầu đến nhân viên hỗ trợ
+								</p>
+								<button class="btn">Gửi yêu cầu</button>
 							</div>
 						</div>
 					</div>
