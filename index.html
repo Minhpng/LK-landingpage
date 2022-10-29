@@ -7,12 +7,11 @@
 		<title>Lang Kingdom landing page</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Roboto:wght@400;500;700;900&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
@@ -126,69 +125,85 @@
 				</p>
 			</div>
 		</footer>
-		<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+		<div class="landingpage-modal role="dialog">
+			<div class="modal-content-wrapper" role="document">
+				<div class="modal-content">
+					<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+					<div class="modal-video">
+						<div class="video-wrapper">
+							<video
+								video-controler
+								controls
+								poster="/img/video-hero-thumbnail.png"
+								src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
+								type="video/mp4"
+							></video>
+						</div>
+						<div class="modal-body">
+							<!-- <div class="ask-for-login">
+								<h3 class="fs-sec-heading fw-semi-bold">Đăng nhập để xem mức giá đặc biệt của của bạn!</h3>
+								<button class="btn">Đăng nhập và nhận ưu đãi</button>
+								<div class="support text-center">
+									<p class="text-red fw-bold fs-body">Vui lòng liên hệ hỗ nếu bạn cần giúp đỡ</p>
+									<div class="support-phone-wrapper">
+										<div class="support-icon">
+											<svg class="icon">
+												<use xlink:href="./img/support-icon.svg#support-icon"></use>
+											  </svg>
+										</div>
+										<a class="support-phone-number" href="tel:+84973979109">097 397 9109</a>
+									</div>
+								</div>
+							</div> -->
+							<div class="price-list">
+								<h2 class="fs-sec-heading fw-bold text-center">Mức giá ưu đãi dành riêng cho bạn
+									</br>Chỉ 1 lần duy nhất trong thời gian có hạn</h2>
+								<!-- countdown -->
+								<p class="choose-package-cta">Chọn gói thanh toán</p>
+								<div class="package-wrapper">
+									<div class="package-item">
+										<h2>
+											Gói đặc biệt
+											<span>Bestseller</span>
+										</h2>
+										<div class="package-desc">
+											<p class="desc-text">Gồm:</p>
+											<ul class="package-desc__list">
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">2 năm học</p>
+												</li>
+											</ul>
+											<p class="package-price"><span>old price</span>new price</p>
+											<button class="btn">Thanh toán</button>
+										</div>
+									</div>
+									<div class="package-item">
+										<h2>
+											Gói đặc biệt
+											<span>Bestseller</span>
+										</h2>
+										<div class="package-desc">
+											<p class="desc-text">Gồm:</p>
+											<ul class="package-desc__list">
+												<li class="package-desc__item">
+													<div class="package-desc__icon"><img src="./img/list-check.svg" alt=""></div>
+													<p class="package-desc__content">2 năm học</p>
+												</li>
+											</ul>
+											<p class="package-price"><span>old price</span>new price</p>
+											<button class="btn">Thanh toán</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
-			const renderReview = () => {
-				const reviewList = [
-					{ src: "/img/comment/review-20.png" },
-					{ src: "/img/comment/review-21.png" },
-					{ src: "/img/comment/review-22.png" },
-					{ src: "/img/comment/review-24.png" },
-					{ src: "/img/comment/review-26.png" },
-				]
 
-				let htmlReview = ""
-				reviewList.forEach((review) => {
-					htmlReview += `
-                                    <div class="swiper-slide">
-                                    <img src="${review.src}" alt="">
-                                    </div>
-                                    `
-				})
-
-				const reviewWrapper = document.querySelector("[reviewWrapper]")
-				console.log(htmlReview)
-				reviewWrapper.innerHTML = htmlReview
-			}
-
-			renderReview()
-
-			const swiper = new Swiper(".swiper", {
-				loop: true,
-
-				autoplay: {
-					delay: 5000,
-					pauseOnMouseEnter: true,
-				},
-
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-					rewind: true,
-				},
-
-				pagination: {
-					el: ".swiper-pagination",
-					clickable: true,
-				},
-
-				breakpoints: {
-					375: {
-						slidesPerView: 1,
-						spaceBetween: 50,
-					},
-
-					640: {
-						slidesPerView: 1,
-						spaceBetween: 50,
-					},
-
-					1024: {
-						slidesPerView: 2,
-						spaceBetween: 20,
-					},
-				},
-			})
 		</script>
 	</body>
 </html>

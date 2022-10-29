@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"watch:scss": "sass -w sass/style.scss css/style.css"
+		"watch:scss": "sass -w sass/style.scss css/style.css",
+		"adb": "adb connect 192.168.31.112:41683"
 	},
 	"repository": {
 		"type": "git",

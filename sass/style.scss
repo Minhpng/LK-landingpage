@@ -2,6 +2,9 @@
 @import "./normalize";
 @import "./text-color";
 @import "./utilities";
+@import "./component/modal";
+@import "./component/support-section";
+@import "./component/package-list";
 
 * {
 	// outline: 1px solid red;
@@ -88,12 +91,13 @@ header .container {
 
 .gift-section {
 	--margin-top: 40px;
+	--background-position-2: -9.75rem clamp(12.5rem, 5vw, 7.5rem);
 	margin-top: var(--margin-top);
 	background-color: var(--bg-light);
-	background-image: url(../img/gift-background.png);
+	background-image: url(../img/gift-background.png), url(../img/gift.svg);
+	background-position: 110% bottom, var(--background-position-2);
 	background-repeat: no-repeat;
-	background-size: 40%;
-	background-position: 110% bottom;
+	background-size: 40%, 20%;
 	position: relative;
 
 	.container {
@@ -181,46 +185,8 @@ header .container {
 	position: relative;
 }
 
-.testimonial .swiper-wrapper {
-	align-items: center;
-}
-
-.testimonial .swiper-slide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 0;
-	position: relative;
-}
-
-.custom-swiper-navigation {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-	font-size: 1.2rem;
-	font-weight: 900;
-	color: var(--clr-blue-btn);
-}
-
-.swiper-pagination {
-	position: revert;
-	padding-inline: 8px;
-	width: unset !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-	top: 14px;
-	position: relative;
-	left: revert;
-	right: revert;
-}
+// ===============================================================
+// package ===========================================
 
 // ===============================================================
 // footer===========================================
