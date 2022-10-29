@@ -524,11 +524,12 @@ a {
   font-size: 1.125rem;
   color: #333;
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-direction: column;
 }
-.request-support .btn {
-  background-color: hsl(215deg, 100%, 50%);
+.request-support a {
+  color: hsl(215deg, 100%, 65%);
+  font-weight: 700;
 }
 
 .price-list {
@@ -568,12 +569,13 @@ a {
 }
 .price-list .package-item h2 span {
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #fff;
   background-color: hsl(40deg, 97%, 54%);
   padding: 0.3em 0.4em;
   border-radius: 8px;
   line-height: 1;
+  letter-spacing: 0.3px;
   position: relative;
   bottom: 3px;
 }
