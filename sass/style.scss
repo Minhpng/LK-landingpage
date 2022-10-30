@@ -6,6 +6,7 @@
 @import "./component/support-section";
 @import "./component/package-list";
 @import "./component/countdown";
+@import "./component/exercise";
 * {
 	// outline: 1px solid red;
 }
@@ -81,7 +82,6 @@ header .container {
 	border-radius: 15px;
 	padding: 1em;
 	margin-top: -270px;
-	cursor: pointer;
 	color: #fff;
 	text-align: center;
 }
@@ -91,14 +91,19 @@ header .container {
 
 .gift-section {
 	--margin-top: 40px;
-	--background-position-2: -9.75rem clamp(12.5rem, 5vw, 7.5rem);
+	--background-position-2: -2.75rem 25rem;
 	margin-top: var(--margin-top);
 	background-color: var(--bg-light);
 	background-image: url(../img/gift-background.png), url(../img/gift.svg);
 	background-position: 110% bottom, var(--background-position-2);
 	background-repeat: no-repeat;
-	background-size: 40%, 20%;
+	background-size: 40%, 30%;
 	position: relative;
+
+	@media screen and (min-width: 56.25rem) {
+		--background-position-2: -6.75rem 12.5rem;
+		background-size: 40%, 20%;
+	}
 
 	.container {
 		padding-left: 20px;
@@ -116,11 +121,12 @@ header .container {
 	text-align: center;
 	padding-top: var(--section-padding);
 	margin-inline: auto;
+
 	overflow: hidden;
 
 	background-image: url("../img/section-divider.svg");
 	background-size: auto;
-	background-position: top left;
+	background-position: left top;
 	background-repeat: repeat-x;
 	background-color: #377afd;
 	color: #fff;

@@ -13,6 +13,7 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./main-script.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -125,10 +126,11 @@
 				</p>
 			</div>
 		</footer>
-		<div class="landingpage-modal role="dialog">
+		<div style="display: none" class="landingpage-modal role="dialog">
 			<div class="modal-content-wrapper" role="document">
 				<div class="modal-content">
 					<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+					<!-- modal children -->
 					<div
 					 style="display: none;"
 					 class="modal-video">
@@ -290,6 +292,25 @@
 								</p>
 								<a href="#">Bấm gửi yêu cầu</a>
 							</div>
+						</div>
+					</div>
+
+					<div style="display: none" class="lp-exercise incorrect">
+						<div class="question-number">
+							Câu: 1/5
+						</div>
+						<div class="question-title">Tôi đi học bằng xe đạp mỗi ngày</div>
+						<div class="question-input">
+							<textarea placeholder="Dịch câu trên sang tiếng Anh..." rows="4"></textarea>
+							<p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
+							<p class="question-input__check-result">Đúng rồi!</p>
+							<div class="question-result">
+								<div class="question-result__desc">Đáp án:</div>
+								<div class="question-result__answer">I go to school by bike every day</div>
+							</div>
+
+							<button class="btn submit-anwswer">Nộp bài</button>
+							<button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
 						</div>
 					</div>
 				</div>
