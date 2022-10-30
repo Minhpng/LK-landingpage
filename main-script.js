@@ -93,18 +93,6 @@ function App() {
                 `
             })
 
-            modal.onclick = (e) => {
-                if (e.target.closest('.close-btn')) {
-                    closeModal()
-                }
-
-                if (e.target.closest('#login-btn')) {
-                    const element = e.target
-
-                    element.closest('.modal-body').innerHTML = packageSection()
-                }
-            }
-
             const packageSection = () => {
                 return `
                 <div class="price-list">
@@ -158,7 +146,26 @@ function App() {
             `
             }
 
+            modal.onclick = (e) => {
+                if (e.target.closest('.close-btn')) {
+                    closeModal()
+                }
 
+                if (e.target.closest('#login-btn')) {
+                    const element = e.target
+
+                    element.closest('.modal-body').innerHTML = `<div class="loader"></div>`
+
+                    const modalBody = $('.loader').closest('.modal-body')
+
+                    setTimeout(() => {
+                        console.log(element);
+                        console.log(modalBody);
+                        modalBody.innerHTML = packageSection()
+                    }, 500)
+
+                }
+            }
 
             const html = `
                <div class="modal-video">

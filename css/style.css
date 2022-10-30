@@ -377,38 +377,35 @@ a {
   font-family: "Merriweather", serif;
 }
 
-.wave {
-  position: absolute;
-  height: 28px;
-  width: 100%;
-  background: #f5f5f5;
-  top: -9px;
+.loader {
+  flex-grow: 0 !important;
+  margin: auto;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
 }
 
-.wave::before,
-.wave::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 100% 50%;
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
-
-.wave::before {
-  width: 55%;
-  height: 109%;
-  background-color: #f5f5f5;
-  right: -1.5%;
-  top: 77%;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-.wave::after {
-  width: 75%;
-  height: 160%;
-  background-color: #f5f5f5;
-  left: -1.5%;
-  top: 13%;
-}
-
 .landingpage-modal {
   display: block;
   position: fixed;
@@ -559,6 +556,7 @@ a {
 
 .price-list {
   --fs-sec-heading: clamp(var(--fs-500), 5vw, var(--fs-600));
+  animation: slideIn 500ms cubic-bezier(0, 0, 0.05, 0.98) forwards;
 }
 .price-list .choose-package-cta {
   font-size: 1.25rem;
