@@ -46,9 +46,6 @@ const App = (() => {
     ]
 
     function handleEvent() {
-
-
-
         videoWrapperLandingpage && videoWrapperLandingpage.addEventListener('click', () => {
             openModal(openVideo())
         })
@@ -446,7 +443,6 @@ const App = (() => {
     }
 
     function start() {
-
         handleEvent()
     }
 
