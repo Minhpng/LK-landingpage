@@ -237,72 +237,32 @@ const App = {
 
     openExercise() {
 
+        const rightSound = new Audio('./audio/bell-right.mp3')
+        const wrongSound = new Audio('./audio/bell-wrong.mp3')
+
         const exercisePackage = [
             {
                 questionName: 'Tôi đi học bằng xe đạp mỗi ngày',
-                answer: '1'
+                answer: 'I go to school by bike every day'
                 // I go to school by bike every day
             },
             {
-                questionName: '2 Tôi đi học bằng xe đạp mỗi ngày',
-                answer: '2'
+                questionName: 'Có gì đó trong mắt của tôi',
+                answer: "There's something in my eyes",
+            },
+            {
+                questionName: 'Bạn cảm thấy thế nào?',
+                answer: "How are you feeling?",
+            },
+            {
+                questionName: 'Bạn ổn chứ?',
+                answer: "Are you alright?",
+            },
+            {
+                questionName: 'Tôi ổn, cảm ơn',
+                answer: "I am fine, thanks",
             },
         ]
-
-        let currentQuestion = 0
-
-        function createExercise() {
-            const exerciseWrapper = document.createElement('div')
-            exerciseWrapper.classList.add('exercise-question')
-
-            const html = `
-                <div class="question-number">
-                    Câu: ${currentQuestion + 1}/5
-                </div>
-                <div class="question-title">${exercisePackage[currentQuestion].questionName}</div>
-                <div class="question-input">
-                    <input placeholder="Dịch câu trên sang tiếng Anh..." rows="4">
-                    <p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
-                </div>
-                <div class="question-btn-wrapper">
-                    <button class="btn submit-anwswer">Nộp bài</button>
-                    <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
-                </div>
-            `
-
-            const result = (isRight) => {
-
-                const html = `<div class="question-result">
-                                <div class="question-result__desc">Đáp án:</div>
-                                <div class="question-result__answer">${exercisePackage[currentQuestion].answer}</div>
-                            </div>
-                    `
-                return `
-                    <p class="question-input__check-result">${isRight ? 'Đúng rồi' : 'Sai rồi'}</p>
-                    ${!isRight ? html : ''}
-                    <button class="btn submit-anwswer">Tiếp theo</button>
-                    <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
-            `
-            }
-
-            return {
-                html,
-                result,
-                exerciseWrapper
-            }
-        }
-
-        const render = () => {
-            const { html, result, exerciseWrapper } = createExercise()
-
-            if (currentQuestion < exercisePackages.length) {
-                currentQuestion++
-            }
-
-            exerciseWrapper.innerHTML = html
-
-            return { result, exerciseWrapper }
-        }
 
         let html = `
             <div class="lp-exercise">
@@ -319,12 +279,151 @@ const App = {
             </div>
         `
 
-        const resetQuestion = (element) => {
+        let currentQuestion = 0
+
+        function createExercise() {
+            const exerciseWrapper = document.createElement('div')
+            exerciseWrapper.classList.add('exercise-question')
+
+            const html = `
+                <div class="question-number">
+                    Câu: ${currentQuestion + 1}/${exercisePackage.length}
+                </div>
+                <div class="question-title">${exercisePackage[currentQuestion].questionName}</div>
+                <div class="question-input">
+                    <input type="text"placeholder="Dịch câu trên sang tiếng Anh..." rows="4">
+                    <p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
+                </div>
+                <div class="question-btn-wrapper">
+                    <button class="btn submit-anwswer">Nộp bài</button>
+                    <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
+                </div>
+            `
+
+            exerciseWrapper.innerHTML = html
+
+            const result = (isRight) => {
+
+                const html = `<div class="question-result">
+                                <div class="question-result__desc">Đáp án:</div>
+                                <div class="question-result__answer">${exercisePackage[currentQuestion].answer}</div>
+                            </div>
+                    `
+                return `
+                    <p class="question-input__check-result">${isRight ? 'Đúng rồi! Hay quá!' : ''}</p>
+                    ${!isRight ? html : ''}
+                    <button class="btn submit-anwswer">Tiếp theo</button>
+                    <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
+            `
+            }
+
+            return {
+                result,
+                exerciseWrapper
+            }
+        }
+        const { result, exerciseWrapper } = createExercise()
+
+        function showFinishedScreen(element) {
+            const elementWrapper = element.closest('.lp-exercise')
+            elementWrapper.classList = 'lp-exercise'
+
+            elementHtmlContent = `
+                <div class="exercise-finished">
+                    <p class="exercise-finished__desc">Bạn trả lời đúng bao nhiêu câu?
+                    </p>
+                    <p class="exercise-finished__desc">Nếu các câu đơn giản này bạn chưa nói chính xác được, thì bạn nên xem 1 lần hết video này!
+                    </p>
+
+                    <div class="video-wrapper">
+                        <video
+                            video-controler
+                            controls
+                            poster="/img/video-hero-thumbnail.png"
+                            src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
+                            type="video/mp4"
+                        ></video>
+                    </div>
+                    <button class="btn">Không, tôi chỉ muốn học thử ngay!</button>
+                </div>
+            `
+
+            elementWrapper.innerHTML = elementHtmlContent
+        }
+
+        function resetQuestion(element) {
             element.closest('.lp-exercise').classList.remove('correct')
             element.closest('.lp-exercise').classList.remove('incorrect')
             while (element.firstChild) {
                 element.removeChild(element.firstChild)
             }
+        }
+
+        function checkResult(e, exerciseWrapper) {
+            e.preventDefault()
+            let userInputValue = e.target.value.replace(/,|\.|\?|\!/g, '')
+            rightAnswer = exercisePackage[currentQuestion].answer.replace(/,|\.|-/g, '')
+            const isRight = userInputValue.toUpperCase() === rightAnswer.toUpperCase()
+
+            const showHtmlResult = exerciseWrapper.querySelector('.question-btn-wrapper')
+            showHtmlResult.innerHTML = result(isRight)
+
+            const nextBtn = showHtmlResult.querySelector('.submit-anwswer')
+
+            function loadNextQuestion(e) {
+                if (currentQuestion < exercisePackage.length - 1) {
+                    currentQuestion++
+                    showNextQuestion(e.target)
+                } else {
+                    showFinishedScreen(e.target)
+                }
+            }
+
+            nextBtn.addEventListener('click', loadNextQuestion)
+
+            e.target.style.borderColor = 'currentColor'
+            e.target.disabled = true;
+
+            if (isRight) {
+                rightSound.play()
+                exerciseWrapper.closest('.lp-exercise').classList.add('correct')
+                exerciseWrapper.closest('.lp-exercise').classList.remove('incorrect')
+
+
+            } else {
+                wrongSound.play()
+                exerciseWrapper.closest('.lp-exercise').classList.remove('correct')
+                exerciseWrapper.closest('.lp-exercise').classList.add('incorrect')
+
+            }
+        }
+
+
+        function showNextQuestion(element) {
+            const { result, exerciseWrapper } = createExercise()
+
+            const exerciseElement = element.closest('.lp-exercise')
+            resetQuestion(exerciseElement)
+            exerciseElement.appendChild(exerciseWrapper)
+
+            const userInput = exerciseWrapper.querySelector('input')
+            userInput.focus()
+
+            const checkResultBtn = exerciseWrapper.querySelector('.submit-anwswer')
+            checkResultBtn.style.opacity = 0.5
+
+            userInput.addEventListener('keyup', (e) => {
+                if (!userInput.value) return
+
+                checkResultBtn.addEventListener('click', () => {
+                    checkResult(e, exerciseWrapper)
+                })
+                checkResultBtn.style.opacity = 1
+                if (e.key === 'Enter') {
+                    checkResult(e, exerciseWrapper)
+                }
+            })
+
         }
 
         const handleEvent = (e, modal) => {
@@ -334,34 +433,8 @@ const App = {
 
             if (e.target.closest('[exercise-start-btn]')) {
                 const element = e.target
-                const { result, exerciseWrapper } = render()
-                const exerciseElement = element.closest('.lp-exercise')
-                resetQuestion(exerciseElement)
-                exerciseElement.appendChild(exerciseWrapper)
 
-                if (exerciseWrapper) {
-                    const userInput = exerciseWrapper.querySelector('input')
-
-                    userInput.onkeyup = (e) => {
-                        if (e.key === 'Enter') {
-                            e.preventDefault()
-                            const userInputValue = userInput.value
-                            const isRight = userInputValue === exercisePackage[currentQuestion].answer
-                            const questionBtnWrapper = exerciseWrapper.querySelector('.question-btn-wrapper')
-
-                            questionBtnWrapper.innerHTML = result(isRight)
-                            userInput.disabled = true;
-                            if (isRight) {
-                                exerciseWrapper.closest('.lp-exercise').classList.add('correct')
-                                exerciseWrapper.closest('.lp-exercise').classList.remove('incorrect')
-
-                            } else {
-                                exerciseWrapper.closest('.lp-exercise').classList.remove('correct')
-                                exerciseWrapper.closest('.lp-exercise').classList.add('incorrect')
-                            }
-                        }
-                    }
-                }
+                showNextQuestion(element)
             }
 
         }

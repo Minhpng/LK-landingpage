@@ -422,7 +422,7 @@ a {
   justify-content: center;
   align-items: start;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 .landingpage-modal .modal-content {
   width: min(100%, 56.25rem);
@@ -771,12 +771,13 @@ a {
   width: 100%;
   height: 80px;
   resize: none;
-  border: 2px solid currentColor;
+  border: 2px solid transparent;
   border-radius: 5px;
   padding: 0.5em;
   color: var(--result-color);
   background-color: var(--background-color);
   outline: none;
+  margin-bottom: 0.5rem;
 }
 .lp-exercise .question-input input::-webkit-input-placeholder {
   color: hsl(0deg, 0%, 70%);
@@ -867,6 +868,29 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+.lp-exercise .exercise-finished {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.lp-exercise .exercise-finished .exercise-finished__desc + .exercise-finished__desc {
+  margin-bottom: 1em;
+}
+.lp-exercise .exercise-finished .exercise-finished__desc {
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #333;
+  font-family: "Merriweather", serif;
+  text-align: center;
+  margin-bottom: 0.5em;
+  max-width: 700px;
+}
+.lp-exercise .exercise-finished .btn {
+  margin-top: auto;
 }
 
 body {

@@ -65,12 +65,13 @@
 			width: 100%;
 			height: 80px;
 			resize: none;
-			border: 2px solid currentColor;
+			border: 2px solid transparent;
 			border-radius: 5px;
 			padding: 0.5em;
 			color: var(--result-color);
 			background-color: var(--background-color);
 			outline: none;
+			margin-bottom: 0.5rem;
 
 			&::-webkit-input-placeholder {
 				color: hsl(0, 0%, 70%);
@@ -174,5 +175,32 @@
 		font-size: 1.5rem;
 		font-weight: 700;
 		margin-bottom: 1rem;
+	}
+
+	.exercise-finished {
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		flex-direction: column;
+		flex-grow: 1;
+
+		.exercise-finished__desc + .exercise-finished__desc {
+			margin-bottom: 1em;
+		}
+
+		.exercise-finished__desc {
+			font-size: clamp(1.25rem, 5vw, 1.75rem);
+			font-weight: 500;
+			line-height: 1.5;
+			color: #333;
+			font-family: "Merriweather", serif;
+			text-align: center;
+			margin-bottom: 0.5em;
+			max-width: 700px;
+		}
+
+		.btn {
+			margin-top: auto;
+		}
 	}
 }
