@@ -290,12 +290,14 @@ const App = {
                 result,
                 exerciseWrapper
             }
-
-
         }
 
         const render = () => {
             const { html, result, exerciseWrapper } = createExercise()
+
+            if (currentQuestion < exercisePackages.length) {
+                currentQuestion++
+            }
 
             exerciseWrapper.innerHTML = html
 
