@@ -32,7 +32,7 @@
 					<h1 class="hero-heading">Hãy <span>khoan</span>
 					</h1>
 					<h3 class="main-title fs-sec-heading fw-sm-bold">Đừng bấm nút học thử nếu bạn chưa biết cách!</h3>
-					<button class="btn">HỌC THỬ NGAY</button>
+					<button exercse-btn class="btn">HỌC THỬ NGAY</button>
 				</div>
 			</section>
 			<div class="container video-section">
@@ -49,13 +49,6 @@
 							</svg>
 						</div>
 						<img src="./img/video-hero-thumbnail.png" alt="">
-						<!-- <video
-							video-controler
-							controls
-							poster="/img/video-hero-thumbnail.png"
-							src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
-							type="video/mp4"
-						></video> -->
 					</div>
 				</div>
 			</div>
@@ -295,22 +288,37 @@
 						</div>
 					</div>
 
-					<div style="display: none" class="lp-exercise incorrect">
-						<div class="question-number">
-							Câu: 1/5
+					<div style="display: none" class="lp-exercise">
+						<div class="exercise-intro">
+							<div class="exercise-intro__image">
+								<img src="./img/exercise-intro-img.png" alt="do you speak english?">
+							</div>
+							<h1 class="exercise-intro__title">Khoan đã</h1>
+							<p class="exercise-intro__desc">Hãy thử nói vài câu để kiểm tra trình độ của bạn trước nhé?
+							</p>
+							<p class="exercise-intro__cta">Bạn đã sẵn sàng chưa?</p>
+							<button exercise-start-btn class="btn">Bắt đầu</button>
 						</div>
-						<div class="question-title">Tôi đi học bằng xe đạp mỗi ngày</div>
-						<div class="question-input">
-							<textarea placeholder="Dịch câu trên sang tiếng Anh..." rows="4"></textarea>
-							<p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
-							<p class="question-input__check-result">Đúng rồi!</p>
+
+						<div style="display: none" class="exercse-question">
+							<div class="question-number">
+								Câu: 1/5
+							</div>
+							<div class="question-title">Tôi đi học bằng xe đạp mỗi ngày</div>
+							<div class="question-input">
+								<textarea placeholder="Dịch câu trên sang tiếng Anh..." rows="4"></textarea>
+								<p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
+								<p class="question-input__check-result">Đúng rồi!</p>
+							</div>
 							<div class="question-result">
 								<div class="question-result__desc">Đáp án:</div>
 								<div class="question-result__answer">I go to school by bike every day</div>
 							</div>
 
-							<button class="btn submit-anwswer">Nộp bài</button>
-							<button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
+							<div class="question-btn-wrapper">
+								<button class="btn submit-anwswer">Nộp bài</button>
+								<button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
+							</div>
 						</div>
 					</div>
 				</div>
