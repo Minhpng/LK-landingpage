@@ -5,8 +5,8 @@ const body = $('body')
 const videoWrapperLandingpage = $('.video-wrapper')
 const exerciseBtn = $('[exercse-btn]')
 
-const App = {
-    packages: [
+const App = (() => {
+    const packages = [
         {
             name: 'Gói đặc biệt',
             desc: [
@@ -43,28 +43,28 @@ const App = {
             priceOld: '1,290,000 VNĐ',
             priceNew: '890,000 VNĐ',
         },
-    ],
+    ]
 
-    handleEvent() {
+    function handleEvent() {
 
 
 
         videoWrapperLandingpage && videoWrapperLandingpage.addEventListener('click', () => {
-            this.openModal(this.openVideo())
+            openModal(openVideo())
         })
 
         exerciseBtn && exerciseBtn.addEventListener('click', () => {
-            this.openModal(this.openExercise())
+            openModal(openExercise())
         })
-    },
+    }
 
-    closeModal(modal) {
+    function closeModal(modal) {
         body.classList.remove('stop-scrolling')
         body.removeChild(modal)
         delete modal
-    },
+    }
 
-    openModal(html) {
+    function openModal(html) {
 
         const modal = document.createElement('div')
         modal.classList.add('landingpage-modal')
@@ -92,9 +92,9 @@ const App = {
         `
 
         return modal
-    },
+    }
 
-    openVideo() {
+    function openVideo() {
 
         const packageItem = this.packages.map(package => {
             const packageDesc = package['desc'].map(item => {
@@ -233,9 +233,9 @@ const App = {
             packageSection,
             handleEvent
         }
-    },
+    }
 
-    openExercise() {
+    function openExercise() {
 
         const rightSound = new Audio('./audio/bell-right.mp3')
         const wrongSound = new Audio('./audio/bell-wrong.mp3')
@@ -443,14 +443,12 @@ const App = {
             html,
             handleEvent
         }
-    },
-
-    start() {
-
-        this.handleEvent()
     }
-}
 
+    function start() {
 
+        handleEvent()
+    }
 
-App.start()
+    return start()
+})()
