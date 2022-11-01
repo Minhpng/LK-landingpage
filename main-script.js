@@ -121,6 +121,29 @@ const App = (() => {
         })
 
         const packageSection = () => {
+
+            const countdown = `
+                    <div class="countdown__heading">Ưu đãi kết thúc sau:</div>
+                    <div class="countdown__clock-wrapper">
+                        <div class="countdown__number-wrapper">
+                            <span class="countdown-number">02</span>
+                            <span class="countdown-prefix">Ngày</span>
+                        </div>
+                        <div class="countdown__number-wrapper">
+                            <span class="countdown-number">12</span>
+                            <span class="countdown-prefix">Giờ</span>
+                        </div>
+                        <div class="countdown__number-wrapper">
+                            <span class="countdown-number">20</span>
+                            <span class="countdown-prefix">Phút</span>
+                        </div>
+                        <div class="countdown__number-wrapper">
+                            <span class="countdown-number">11</span>
+                            <span class="countdown-prefix">Giây</span>
+                        </div>
+                    </div>
+
+            `
             return `
             <div class="price-list">
                     <h2 class="fs-sec-heading fw-bold text-center">Mức giá ưu đãi dành riêng cho bạn
@@ -185,20 +208,23 @@ const App = (() => {
 
                 const modalBody = $('.loader').closest('.modal-body')
 
+                const html = packageSection()
 
                 setTimeout(() => {
-                    modalBody.innerHTML = packageSection()
+                    modalBody.innerHTML = html
+                    console.log('1');
+
                 }, 500)
+
             }
         }
-
-
 
         const html = `
            <div class="modal-video">
                <div class="video-wrapper">
                    <video
                        video-controler
+                       autoplay
                        controls
                        poster="/img/video-hero-thumbnail.png"
                        src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
