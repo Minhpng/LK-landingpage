@@ -93,7 +93,7 @@ const App = (() => {
 
     function openVideo() {
 
-        const packageItem = this.packages.map(package => {
+        const packageItem = packages.map(package => {
             const packageDesc = package['desc'].map(item => {
                 return `
                 <li class="package-desc__item">
@@ -175,7 +175,7 @@ const App = (() => {
 
         const handleEvent = (e, modal) => {
             if (e.target.closest('.close-btn')) {
-                this.closeModal(modal)
+                closeModal(modal)
             }
 
             if (e.target.closest('#login-btn')) {
@@ -425,7 +425,7 @@ const App = (() => {
 
         const handleEvent = (e, modal) => {
             if (e.target.closest('.close-btn')) {
-                this.closeModal(modal)
+                closeModal(modal)
             }
 
             if (e.target.closest('[exercise-start-btn]')) {
