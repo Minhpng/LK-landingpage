@@ -226,7 +226,7 @@ const App = (() => {
                        video-controler
                        autoplay
                        controls
-                       poster="/img/video-hero-thumbnail.png"
+                       poster="./img/video-hero-thumbnail.png"
                        src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
                        type="video/mp4"
                    ></video>
