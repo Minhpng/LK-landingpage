@@ -61,7 +61,9 @@ const App = (() => {
         delete modal
     }
 
-    function openModal(html) {
+    function openModal(element) {
+
+        const [html, handleEvent] = element
 
         const modal = document.createElement('div')
         modal.classList.add('landingpage-modal')
@@ -70,7 +72,11 @@ const App = (() => {
 
 
         modal.onclick = (e) => {
-            html.handleEvent(e, modal)
+            if (e.target.closest('.close-btn')) {
+                closeModal(modal)
+            }
+
+            handleEvent(e)
         }
 
         body.appendChild(modal)
@@ -83,7 +89,7 @@ const App = (() => {
                     class="close-btn">
                     <i class="fa-solid fa-xmark"></i></div>
                 <!-- modal children -->
-                ${html.html}
+                ${html}
             </div>
         </div>
         `
@@ -120,30 +126,59 @@ const App = (() => {
             `
         })
 
+        const countdownElement = (days, hours, minutes, seconds) => {
+
+            return `
+                <div class="countdown__clock-wrapper">
+                    <div class="countdown__number-wrapper">
+                        <span class="countdown-number">${days}</span>
+                        <span class="countdown-prefix">Ngày</span>
+                    </div>
+                    <div class="countdown__number-wrapper">
+                        <span class="countdown-number">${hours}</span>
+                        <span class="countdown-prefix">Giờ</span>
+                    </div>
+                    <div class="countdown__number-wrapper">
+                        <span class="countdown-number">${minutes}</span>
+                        <span class="countdown-prefix">Phút</span>
+                    </div>
+                    <div class="countdown__number-wrapper">
+                        <span class="countdown-number">${seconds}</span>
+                        <span class="countdown-prefix">Giây</span>
+                    </div>
+                </div>
+
+                `
+        }
+
+        const timer = (html, endTime) => {
+
+            const converNumber = (value) => {
+                if (value >= 10) return value.toString()
+                return value = `0${value}`
+            }
+            var countDownDate = new Date(endTime).getTime();
+
+            var now = new Date().getTime();
+
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            days = converNumber(days)
+            hours = converNumber(hours)
+            minutes = converNumber(minutes)
+            seconds = converNumber(seconds)
+
+            let countdownHtml = html(days, hours, minutes, seconds)
+            return [countdownHtml, distance]
+        }
+
         const packageSection = () => {
 
-            const countdown = `
-                    <div class="countdown__heading">Ưu đãi kết thúc sau:</div>
-                    <div class="countdown__clock-wrapper">
-                        <div class="countdown__number-wrapper">
-                            <span class="countdown-number">02</span>
-                            <span class="countdown-prefix">Ngày</span>
-                        </div>
-                        <div class="countdown__number-wrapper">
-                            <span class="countdown-number">12</span>
-                            <span class="countdown-prefix">Giờ</span>
-                        </div>
-                        <div class="countdown__number-wrapper">
-                            <span class="countdown-number">20</span>
-                            <span class="countdown-prefix">Phút</span>
-                        </div>
-                        <div class="countdown__number-wrapper">
-                            <span class="countdown-number">11</span>
-                            <span class="countdown-prefix">Giây</span>
-                        </div>
-                    </div>
-
-            `
             return `
             <div class="price-list">
                     <h2 class="fs-sec-heading fw-bold text-center">Mức giá ưu đãi dành riêng cho bạn
@@ -152,22 +187,7 @@ const App = (() => {
                     <div class="countdown">
                         <div class="countdown__heading">Ưu đãi kết thúc sau:</div>
                         <div class="countdown__clock-wrapper">
-                            <div class="countdown__number-wrapper">
-                                <span class="countdown-number">02</span>
-                                <span class="countdown-prefix">Ngày</span>
-                            </div>
-                            <div class="countdown__number-wrapper">
-                                <span class="countdown-number">12</span>
-                                <span class="countdown-prefix">Giờ</span>
-                            </div>
-                            <div class="countdown__number-wrapper">
-                                <span class="countdown-number">20</span>
-                                <span class="countdown-prefix">Phút</span>
-                            </div>
-                            <div class="countdown__number-wrapper">
-                                <span class="countdown-number">11</span>
-                                <span class="countdown-prefix">Giây</span>
-                            </div>
+                            ${timer(countdownElement, 'Nov 14, 2025')}
                         </div>
                     </div>
                     <p class="choose-package-cta">Chọn gói thanh toán</p>
@@ -196,26 +216,36 @@ const App = (() => {
         `
         }
 
-        const handleEvent = (e, modal) => {
-            if (e.target.closest('.close-btn')) {
-                closeModal(modal)
-            }
+
+
+        const handleEvent = (e) => {
 
             if (e.target.closest('#login-btn')) {
                 const element = e.target
 
                 element.closest('.modal-body').innerHTML = `<div class="loader"></div>`
 
-                const modalBody = $('.loader').closest('.modal-body')
+                const modalBody = $('.modal-body')
 
                 const html = packageSection()
 
+
                 setTimeout(() => {
                     modalBody.innerHTML = html
-                    console.log('1');
 
+                    const countdown = $('.countdown__clock-wrapper')
+
+                    const x = setInterval(function () {
+
+                        const [html, distance] = timer(countdownElement, 'Nov 14, 2025')
+
+                        countdown.innerHTML = html
+
+                        if (distance < 0) {
+                            clearInterval(x);
+                        }
+                    }, 1000);
                 }, 500)
-
             }
         }
 
@@ -251,11 +281,10 @@ const App = (() => {
 
            </div>
            `
-        return {
+        return [
             html,
-            packageSection,
             handleEvent
-        }
+        ]
     }
 
     function openExercise() {
@@ -266,8 +295,7 @@ const App = (() => {
         const exercisePackage = [
             {
                 questionName: 'Tôi đi học bằng xe đạp mỗi ngày',
-                answer: 'I go to school by bike every day'
-                // I go to school by bike every day
+                answer: 'I go to school by bike every day',
             },
             {
                 questionName: 'Có gì đó trong mắt của tôi',
@@ -287,7 +315,7 @@ const App = (() => {
             },
         ]
 
-        let html = `
+        let initScreenExerciseHtml = `
             <div class="lp-exercise">
                 <div class="exercise-intro">
                     <div class="exercise-intro__image">
@@ -308,7 +336,7 @@ const App = (() => {
             const exerciseWrapper = document.createElement('div')
             exerciseWrapper.classList.add('exercise-question')
 
-            const html = `
+            const exerciseHtml = `
                 <div class="question-number">
                     Câu: ${currentQuestion + 1}/${exercisePackage.length}
                 </div>
@@ -322,34 +350,29 @@ const App = (() => {
                     <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
                 </div>
             `
-
-            exerciseWrapper.innerHTML = html
-
-            const result = (isRight) => {
-
-                const html = `<div class="question-result">
-                                <div class="question-result__desc">Đáp án:</div>
-                                <div class="question-result__answer">${exercisePackage[currentQuestion].answer}</div>
-                            </div>
-                    `
-                return `
-                    <p class="question-input__check-result">${isRight ? 'Đúng rồi! Hay quá!' : ''}</p>
-                    ${!isRight ? html : ''}
-                    <button class="btn submit-anwswer">Tiếp theo</button>
-                    <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
-            `
-            }
-
-            return {
-                result,
-                exerciseWrapper
-            }
+            exerciseWrapper.innerHTML = exerciseHtml
+            return exerciseWrapper
         }
-        const { result, exerciseWrapper } = createExercise()
+
+        function renderResult(isRight) {
+            const html = `<div class="question-result">
+                            <div class="question-result__desc">Đáp án:</div>
+                            <div class="question-result__answer">${exercisePackage[currentQuestion].answer}</div>
+                        </div>
+                        `
+            return `
+                <p class="question-input__check-result">${isRight ? 'Đúng rồi! Hay quá!' : ''}</p>
+                ${!isRight ? html : ''}
+                <button class="btn submit-anwswer">Tiếp theo</button>
+                <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
+                `
+        }
 
         function showFinishedScreen(element) {
             const elementWrapper = element.closest('.lp-exercise')
             elementWrapper.classList = 'lp-exercise'
+
+            resetQuestion(element)
 
             elementHtmlContent = `
                 <div class="exercise-finished">
@@ -382,23 +405,24 @@ const App = (() => {
             }
         }
 
-        function checkResult(e, exerciseWrapper) {
-            e.preventDefault()
-            let userInputValue = e.target.value.replace(/,|\.|\?|\!/g, '')
+        function checkResult(event, currentQuestionNode) {
+            event.preventDefault()
+            let userInputValue = event.target.value.replace(/,|\.|\?|\!/g, '')
+            console.log(exercisePackage[currentQuestion].answer);
             rightAnswer = exercisePackage[currentQuestion].answer.replace(/,|\.|-/g, '')
             const isRight = userInputValue.toUpperCase() === rightAnswer.toUpperCase()
 
-            const showHtmlResult = exerciseWrapper.querySelector('.question-btn-wrapper')
-            showHtmlResult.innerHTML = result(isRight)
+            const showHtmlResult = currentQuestionNode.querySelector('.question-btn-wrapper')
+            showHtmlResult.innerHTML = renderResult(isRight)
 
             const nextBtn = showHtmlResult.querySelector('.submit-anwswer')
 
-            function loadNextQuestion(e) {
+            function loadNextQuestion(event) {
                 if (currentQuestion < exercisePackage.length - 1) {
                     currentQuestion++
-                    showNextQuestion(e.target)
+                    showNextQuestion(event.target)
                 } else {
-                    showFinishedScreen(e.target)
+                    showFinishedScreen(event.target)
                 }
             }
 
@@ -409,50 +433,47 @@ const App = (() => {
 
             if (isRight) {
                 rightSound.play()
-                exerciseWrapper.closest('.lp-exercise').classList.add('correct')
-                exerciseWrapper.closest('.lp-exercise').classList.remove('incorrect')
+                currentQuestionNode.closest('.lp-exercise').classList.add('correct')
+                currentQuestionNode.closest('.lp-exercise').classList.remove('incorrect')
 
 
             } else {
                 wrongSound.play()
-                exerciseWrapper.closest('.lp-exercise').classList.remove('correct')
-                exerciseWrapper.closest('.lp-exercise').classList.add('incorrect')
+                currentQuestionNode.closest('.lp-exercise').classList.remove('correct')
+                currentQuestionNode.closest('.lp-exercise').classList.add('incorrect')
 
             }
         }
 
 
         function showNextQuestion(element) {
-            const { result, exerciseWrapper } = createExercise()
+            const currentQuestion = createExercise()
 
             const exerciseElement = element.closest('.lp-exercise')
             resetQuestion(exerciseElement)
-            exerciseElement.appendChild(exerciseWrapper)
+            exerciseElement.appendChild(currentQuestion)
 
-            const userInput = exerciseWrapper.querySelector('input')
+            const userInput = currentQuestion.querySelector('input')
             userInput.focus()
 
-            const checkResultBtn = exerciseWrapper.querySelector('.submit-anwswer')
+            const checkResultBtn = currentQuestion.querySelector('.submit-anwswer')
             checkResultBtn.style.opacity = 0.5
 
             userInput.addEventListener('keyup', (e) => {
                 if (!userInput.value) return
 
                 checkResultBtn.addEventListener('click', () => {
-                    checkResult(e, exerciseWrapper)
+                    checkResult(e, currentQuestion)
                 })
                 checkResultBtn.style.opacity = 1
                 if (e.key === 'Enter') {
-                    checkResult(e, exerciseWrapper)
+                    checkResult(e, currentQuestion)
                 }
             })
 
         }
 
-        const handleEvent = (e, modal) => {
-            if (e.target.closest('.close-btn')) {
-                closeModal(modal)
-            }
+        const handleEvent = (e) => {
 
             if (e.target.closest('[exercise-start-btn]')) {
                 const element = e.target
@@ -462,10 +483,10 @@ const App = (() => {
 
         }
 
-        return {
-            html,
+        return [
+            initScreenExerciseHtml,
             handleEvent
-        }
+        ]
     }
 
     function start() {
@@ -474,3 +495,4 @@ const App = (() => {
 
     return start()
 })()
+
