@@ -227,22 +227,23 @@ const App = (() => {
 
                 element.closest('.modal-body').innerHTML = `<div class="loader"></div>`
 
-                const modalBody = $('.modal-body')
+                const modalBody = $('.loader').closest('.modal-body')
 
                 const html = packageSection()
 
 
                 setTimeout(() => {
+
                     modalBody.innerHTML = html
 
-                    const countdown = $('.countdown__clock-wrapper')
+                    const countdowns = $('.countdown__clock-wrapper')
+
 
                     const x = setInterval(function () {
 
                         const [html, distance] = timer(countdownElement, 'Nov 14, 2025')
 
                         countdown.innerHTML = html
-
                         if (distance < 0) {
                             clearInterval(x);
                         }
@@ -408,7 +409,7 @@ const App = (() => {
         }
 
         function checkResult(userInput, currentQuestionNode, event) {
-
+            if (!userInput.value.trim()) return
             userInput.value.replace(/,|\.|\?|\!/g, '')
 
             const rightAnswer = exercisePackage[currentQuestion].answer.replace(/,|\.|-/g, '')
@@ -469,14 +470,14 @@ const App = (() => {
 
                 if (!userInput.value.trim()) {
                     checkResultBtn.style.opacity = 0.5
-                    checkResultBtn.disabled = true
+                    return
                 }
 
 
                 checkResultBtn.addEventListener('click', enableCheckBtn)
                 checkResultBtn.style.opacity = 1
 
-                if (e.key === 'Enter' && userInput.value.trim()) {
+                if (e.key === 'Enter') {
                     checkResult(userInput, currentQuestion)
                 }
             })
