@@ -6,6 +6,18 @@ const videoWrapperLandingpage = $('.video-wrapper')
 const exerciseBtn = $('[exercse-btn]')
 
 const App = (() => {
+
+    const newPackages = [
+        {
+            English: 'how are you today',
+            translation: {
+                vi: 'Hom nay ban the nao',
+                kr: "..."
+            },
+            Options: ['are', 'today']
+
+        }
+    ]
     const packages = [
         {
             name: 'Gói đặc biệt',
@@ -94,7 +106,6 @@ const App = (() => {
         </div>
         `
 
-        return modal
     }
 
     function openVideo() {
