@@ -246,7 +246,7 @@ const App = (() => {
 
                     modalBody.innerHTML = html
 
-                    const countdowns = $('.countdown__clock-wrapper')
+                    const countdown = $('.countdown__clock-wrapper')
 
 
                     const x = setInterval(function () {
