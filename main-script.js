@@ -179,6 +179,8 @@ const App = (() => {
 
         const packageSection = () => {
 
+            const [countdownHtml] = timer(countdownElement, 'Nov 14, 2025')
+
             return `
             <div class="price-list">
                     <h2 class="fs-sec-heading fw-bold text-center">Mức giá ưu đãi dành riêng cho bạn
@@ -187,7 +189,7 @@ const App = (() => {
                     <div class="countdown">
                         <div class="countdown__heading">Ưu đãi kết thúc sau:</div>
                         <div class="countdown__clock-wrapper">
-                            ${timer(countdownElement, 'Nov 14, 2025')}
+                            ${countdownHtml}
                         </div>
                     </div>
                     <p class="choose-package-cta">Chọn gói thanh toán</p>
@@ -346,7 +348,7 @@ const App = (() => {
                     <p class="question-input__cta">Gõ câu trả lời của bạn vào ô trên và bấm Nộp bài!</p>
                 </div>
                 <div class="question-btn-wrapper">
-                    <button class="btn submit-anwswer">Nộp bài</button>
+                    <button class="btn submit-anwswer">Kiểm tra</button>
                     <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
                 </div>
             `
@@ -385,7 +387,7 @@ const App = (() => {
                         <video
                             video-controler
                             controls
-                            poster="/img/video-hero-thumbnail.png"
+                            poster="./img/video-hero-thumbnail.png"
                             src="https://static.langkingdom.me/webinars/replay/buoi-2-bSrOWQTNiy.mp4"
                             type="video/mp4"
                         ></video>
@@ -405,31 +407,31 @@ const App = (() => {
             }
         }
 
-        function checkResult(event, currentQuestionNode) {
-            event.preventDefault()
-            let userInputValue = event.target.value.replace(/,|\.|\?|\!/g, '')
-            console.log(exercisePackage[currentQuestion].answer);
-            rightAnswer = exercisePackage[currentQuestion].answer.replace(/,|\.|-/g, '')
-            const isRight = userInputValue.toUpperCase() === rightAnswer.toUpperCase()
+        function checkResult(userInput, currentQuestionNode, event) {
+
+            userInput.value.replace(/,|\.|\?|\!/g, '')
+
+            const rightAnswer = exercisePackage[currentQuestion].answer.replace(/,|\.|-/g, '')
+            const isRight = userInput.value.toUpperCase() === rightAnswer.toUpperCase()
 
             const showHtmlResult = currentQuestionNode.querySelector('.question-btn-wrapper')
             showHtmlResult.innerHTML = renderResult(isRight)
 
             const nextBtn = showHtmlResult.querySelector('.submit-anwswer')
 
-            function loadNextQuestion(event) {
+            function loadNextQuestion() {
                 if (currentQuestion < exercisePackage.length - 1) {
                     currentQuestion++
-                    showNextQuestion(event.target)
+                    showNextQuestion(currentQuestionNode)
                 } else {
-                    showFinishedScreen(event.target)
+                    showFinishedScreen(currentQuestionNode)
                 }
             }
 
             nextBtn.addEventListener('click', loadNextQuestion)
 
-            e.target.style.borderColor = 'currentColor'
-            e.target.disabled = true;
+            userInput.style.borderColor = 'currentColor'
+            userInput.disabled = true;
 
             if (isRight) {
                 rightSound.play()
@@ -460,14 +462,15 @@ const App = (() => {
             checkResultBtn.style.opacity = 0.5
 
             userInput.addEventListener('keyup', (e) => {
-                if (!userInput.value) return
 
-                checkResultBtn.addEventListener('click', () => {
-                    checkResult(e, currentQuestion)
+                if (!userInput.value.trim()) return
+
+                checkResultBtn.addEventListener('click', (e) => {
+                    checkResult(userInput, currentQuestion)
                 })
                 checkResultBtn.style.opacity = 1
                 if (e.key === 'Enter') {
-                    checkResult(e, currentQuestion)
+                    checkResult(userInput, currentQuestion)
                 }
             })
 
