@@ -463,13 +463,20 @@ const App = (() => {
 
             userInput.addEventListener('keyup', (e) => {
 
-                if (!userInput.value.trim()) return
-
-                checkResultBtn.addEventListener('click', (e) => {
+                function enableCheckBtn() {
                     checkResult(userInput, currentQuestion)
-                })
+                }
+
+                if (!userInput.value.trim()) {
+                    checkResultBtn.style.opacity = 0.5
+                    checkResultBtn.disabled = true
+                }
+
+
+                checkResultBtn.addEventListener('click', enableCheckBtn)
                 checkResultBtn.style.opacity = 1
-                if (e.key === 'Enter') {
+
+                if (e.key === 'Enter' && userInput.value.trim()) {
                     checkResult(userInput, currentQuestion)
                 }
             })
