@@ -105,7 +105,6 @@ const App = (() => {
             </div>
         </div>
         `
-
     }
 
     function openVideo() {
