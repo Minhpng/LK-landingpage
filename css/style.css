@@ -897,39 +897,49 @@ a {
   --color: hsl(0, 82%, 54%);
   position: relative;
   margin: auto;
-  margin-top: 40px;
-  height: 40px;
-  width: 40px;
+  height: 300px;
+  width: 300px;
   text-align: center;
 }
 #countdown-circle #countdown-circle__number {
   color: var(--color);
   display: inline-block;
-  line-height: 40px;
-  font-size: 3rem;
+  line-height: 300px;
+  font-size: 4rem;
+  animation: zoomIn 1000ms linear forwards infinite;
 }
 #countdown-circle svg {
   position: absolute;
   top: 0;
   right: 0;
-  width: 120px;
-  height: 120px;
+  width: 300px;
+  height: 300px;
   transform: rotateY(-180deg) rotateZ(-90deg);
 }
 #countdown-circle svg circle {
-  stroke-dasharray: 113px;
+  stroke-dasharray: 912px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 2px;
+  stroke-width: 8px;
   stroke: var(--color);
   fill: none;
+  animation: countdown var(--timeEnd, 5s) linear forwards;
 }
 @keyframes countdown {
   from {
     stroke-dashoffset: 0px;
   }
   to {
-    stroke-dashoffset: 113px;
+    stroke-dashoffset: 912px;
+  }
+}
+@keyframes zoomIn {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 3;
+    opacity: 0;
   }
 }
 

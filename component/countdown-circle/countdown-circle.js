@@ -2,17 +2,17 @@ const countdownCircle = function (countTime) {
 
     const countdownWrapper = document.createElement('div')
     countdownWrapper.setAttribute('id', 'countdown-circle')
-    countdownWrapper.style.setProperty('--timeEnd', `${countTime}`)
+    countdownWrapper.style.setProperty('--timeEnd', `${countTime}s`)
+
+    console.log(countdownWrapper);
 
     countdownWrapper.innerHTML = `
-                    <div id="countdown-circle">
                         <div id="countdown-circle__number">${countTime}</div>
                         <svg>
-                            <circle r="18" cx="20" cy="20"></circle>
+                            <circle r="145" cx="150" cy="150"></circle>
                         </svg>
-                    </div>
-    `
-    return countdownWrapper.innerHTML
+                    `
+    return countdownWrapper.outerHTML
 }
 
 export default countdownCircle

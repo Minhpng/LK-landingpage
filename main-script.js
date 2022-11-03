@@ -294,6 +294,8 @@ const App = (() => {
 
         const rightSound = new Audio('./audio/bell-right.mp3')
         const wrongSound = new Audio('./audio/bell-wrong.mp3')
+        const countSound = new Audio('./audio/count.mp3')
+        const finishCount = new Audio('./audio/finishCount.mp3')
 
         const exercisePackage = [
             {
@@ -485,30 +487,34 @@ const App = (() => {
             if (e.target.closest('[exercise-start-btn]')) {
                 const element = e.target
 
-                const modalWrapper = element.closest('.modal-content')
+                const modalWrapper = element.closest('.lp-exercise')
 
-                let countdown = 3
-                modalWrapper.innerHTML = exerciseCountdown(countdown)
-
-
+                let countTime = 3
+                modalWrapper.innerHTML = exerciseCountdown(countTime)
+                let countdown = countTime
+                countSound.play()
 
                 const countdownIntro = setInterval(() => {
-                    countdown = --countdown
-                    const countNumberEl = modalWrapper.querySelector('#countdown-circle__number')
-
-                    console.log(countNumberEl, countdown);
-                    countNumberEl.innerText = countdown
-
                     if (countdown <= 0) {
+                        finishCount.play()
+
                         clearInterval(countdownIntro)
+                    } else {
+                        countdown = --countdown
+                        const countNumberEl = modalWrapper.querySelector('#countdown-circle__number')
+                        countNumberEl.style.animation = 'zoomIn 1000ms linear forwards infinite'
+
+                        countNumberEl.innerText = countdown
+                        countSound.play()
                     }
+
                 }, 1000)
 
 
-                // setTimeout(() => {
+                setTimeout(() => {
 
-                //     showNextQuestion(element)
-                // }, 4000)
+                    showNextQuestion(modalWrapper)
+                }, 4000)
             }
 
         }
