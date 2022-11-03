@@ -7,9 +7,7 @@
 @import "./component/package-list";
 @import "./component/countdown";
 @import "./component/exercise";
-* {
-	// outline: 1px solid red;
-}
+@import "../component/countdown-circle/_countdown-circle.scss";
 
 body {
 	font-family: "roboto", sans-serif;

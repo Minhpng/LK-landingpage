@@ -1,3 +1,5 @@
+import { default as exerciseCountdown } from './component/countdown-circle/countdown-circle.js'
+
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -6,18 +8,6 @@ const videoWrapperLandingpage = $('.video-wrapper')
 const exerciseBtn = $('[exercse-btn]')
 
 const App = (() => {
-
-    const newPackages = [
-        {
-            English: 'how are you today',
-            translation: {
-                vi: 'Hom nay ban the nao',
-                kr: "..."
-            },
-            Options: ['are', 'today']
-
-        }
-    ]
     const packages = [
         {
             name: 'Gói đặc biệt',
@@ -70,7 +60,7 @@ const App = (() => {
     function closeModal(modal) {
         body.classList.remove('stop-scrolling')
         body.removeChild(modal)
-        delete modal
+        // delete modal
     }
 
     function openModal(element) {
@@ -109,8 +99,8 @@ const App = (() => {
 
     function openVideo() {
 
-        const packageItem = packages.map(package => {
-            const packageDesc = package['desc'].map(item => {
+        const packageItem = packages.map(packageChild => {
+            const packageDesc = packageChild['desc'].map(item => {
                 return `
                 <li class="package-desc__item">
                     <div class="package-desc__icon"><img src="./img/list-${item[1]}.svg" alt=""></div>
@@ -121,16 +111,16 @@ const App = (() => {
             return `
             <div class="package-item">
                 <h2>
-                    ${package.name}
-                    ${package.bestseller ? '<span>Bestseller</span>' : ''}
+                    ${packageChild.name}
+                    ${packageChild.bestseller ? '<span>Bestseller</span>' : ''}
                 </h2>
                 <div class="package-desc">
                     <p class="desc-text">Gồm:</p>
                     <ul class="package-desc__list">
                         ${packageDesc.join('')}
                     </ul>
-                    <p class="package-price"><span>${package.priceOld}</span> ${package.priceNew}</p>
-                    <button class="btn ${!package.bestseller ? 'btn-secondary' : ''}">Thanh toán</button>
+                    <p class="package-price"><span>${packageChild.priceOld}</span> ${packageChild.priceNew}</p>
+                    <button class="btn ${!packageChild.bestseller ? 'btn-secondary' : ''}">Thanh toán</button>
                 </div>
             </div>
             `
@@ -374,7 +364,7 @@ const App = (() => {
                         </div>
                         `
             return `
-                <p class="question-input__check-result">${isRight ? 'Đúng rồi! Hay quá!' : ''}</p>
+                ${isRight ? '<p class="question-input__check-result">Đúng rồi! Hay quá!</p>' : ''}
                 ${!isRight ? html : ''}
                 <button class="btn submit-anwswer">Tiếp theo</button>
                 <button class="btn btn-no-bg ">Tôi muốn bỏ qua và học thử ngay</button>
@@ -448,16 +438,12 @@ const App = (() => {
                 rightSound.play()
                 currentQuestionNode.closest('.lp-exercise').classList.add('correct')
                 currentQuestionNode.closest('.lp-exercise').classList.remove('incorrect')
-
-
             } else {
                 wrongSound.play()
                 currentQuestionNode.closest('.lp-exercise').classList.remove('correct')
                 currentQuestionNode.closest('.lp-exercise').classList.add('incorrect')
-
             }
         }
-
 
         function showNextQuestion(element) {
             const currentQuestion = createExercise()
@@ -499,7 +485,30 @@ const App = (() => {
             if (e.target.closest('[exercise-start-btn]')) {
                 const element = e.target
 
-                showNextQuestion(element)
+                const modalWrapper = element.closest('.modal-content')
+
+                let countdown = 3
+                modalWrapper.innerHTML = exerciseCountdown(countdown)
+
+
+
+                const countdownIntro = setInterval(() => {
+                    countdown = --countdown
+                    const countNumberEl = modalWrapper.querySelector('#countdown-circle__number')
+
+                    console.log(countNumberEl, countdown);
+                    countNumberEl.innerText = countdown
+
+                    if (countdown <= 0) {
+                        clearInterval(countdownIntro)
+                    }
+                }, 1000)
+
+
+                // setTimeout(() => {
+
+                //     showNextQuestion(element)
+                // }, 4000)
             }
 
         }
