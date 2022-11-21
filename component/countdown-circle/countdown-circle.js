@@ -4,8 +4,6 @@ const countdownCircle = function (countTime) {
     countdownWrapper.setAttribute('id', 'countdown-circle')
     countdownWrapper.style.setProperty('--timeEnd', `${countTime}s`)
 
-    console.log(countdownWrapper);
-
     countdownWrapper.innerHTML = `
                         <div id="countdown-circle__number">${countTime}</div>
                         <svg>

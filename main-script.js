@@ -74,11 +74,15 @@ const App = (() => {
 
 
         modal.onclick = (e) => {
-            if (e.target.closest('.close-btn')) {
+            let closeBtn = e.target.closest('.close-btn')
+
+
+            if (closeBtn) {
                 closeModal(modal)
             }
 
-            handleEvent(e)
+            handleEvent({ e })
+
         }
 
         body.appendChild(modal)
@@ -462,52 +466,51 @@ const App = (() => {
 
             userInput.addEventListener('keyup', (e) => {
 
-                function enableCheckBtn() {
-                    checkResult(userInput, currentQuestion)
-                }
-
                 if (!userInput.value.trim()) {
                     checkResultBtn.style.opacity = 0.5
                     return
                 }
-
-
-                checkResultBtn.addEventListener('click', enableCheckBtn)
+                checkResultBtn.addEventListener('click', () => {
+                    checkResult(userInput, currentQuestion)
+                })
                 checkResultBtn.style.opacity = 1
 
                 if (e.key === 'Enter') {
                     checkResult(userInput, currentQuestion)
                 }
             })
-
         }
 
-        const handleEvent = (e) => {
+        const handleEvent = ({ e }) => {
 
             if (e.target.closest('[exercise-start-btn]')) {
                 const element = e.target
 
                 const modalWrapper = element.closest('.lp-exercise')
 
+                countSound.play()
                 let countTime = 3
                 modalWrapper.innerHTML = exerciseCountdown(countTime)
+                const closeBtn = modalWrapper.closest('.modal-content').querySelector('.close-btn')
+
                 let countdown = countTime
-                countSound.play()
-
                 const countdownIntro = setInterval(() => {
-                    if (countdown <= 0) {
-                        finishCount.play()
-
+                    closeBtn.onclick = () => {
                         clearInterval(countdownIntro)
-                    } else {
-                        countdown = --countdown
-                        const countNumberEl = modalWrapper.querySelector('#countdown-circle__number')
-                        countNumberEl.style.animation = 'zoomIn 1000ms linear forwards infinite'
-
-                        countNumberEl.innerText = countdown
-                        countSound.play()
                     }
 
+                    countdown = --countdown
+                    const countNumberEl = modalWrapper.querySelector('#countdown-circle__number')
+
+                    if (countdown === 0) {
+                        finishCount.play()
+                        countNumberEl.innerText = countdown
+                        clearInterval(countdownIntro)
+                    } else {
+                        countSound.play()
+                        countNumberEl.style.animation = 'zoomIn 1000ms linear forwards infinite'
+                        countNumberEl.innerText = countdown
+                    }
                 }, 1000)
 
 
@@ -516,7 +519,6 @@ const App = (() => {
                     showNextQuestion(modalWrapper)
                 }, 4000)
             }
-
         }
 
         return [

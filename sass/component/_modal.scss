@@ -19,7 +19,6 @@
 
 	.modal-content {
 		width: min(100%, 56.25rem);
-		min-height: 500px;
 		background-color: #fff;
 		border-radius: 15px;
 		// padding: 40px 15px 25px;
@@ -48,7 +47,7 @@
 
 		@media screen and (min-width: 56.25rem) {
 			margin-top: 40px;
-			min-height: 900px;
+			min-height: 700px;
 		}
 	}
 

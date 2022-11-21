@@ -426,7 +426,6 @@ a {
 }
 .landingpage-modal .modal-content {
   width: min(100%, 56.25rem);
-  min-height: 500px;
   background-color: #fff;
   border-radius: 15px;
   min-height: 100%;
@@ -454,7 +453,7 @@ a {
 @media screen and (min-width: 56.25rem) {
   .landingpage-modal .modal-content {
     margin-top: 40px;
-    min-height: 900px;
+    min-height: 700px;
   }
 }
 .landingpage-modal .modal-video {
@@ -845,7 +844,7 @@ a {
   min-width: 250px;
 }
 .lp-exercise .exercise-intro__image {
-  width: min(100% - 30px, 700px);
+  width: min(100% - 30px, 500px);
   margin-inline: auto;
   margin-bottom: 1rem;
 }
@@ -900,6 +899,7 @@ a {
   height: 300px;
   width: 300px;
   text-align: center;
+  overflow: hidden;
 }
 #countdown-circle #countdown-circle__number {
   color: var(--color);
